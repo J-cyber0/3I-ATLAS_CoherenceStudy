@@ -1,0 +1,8 @@
+{
+  "name": "ECLIPTIC",
+  "description": "Heliocentric ecliptic plane (J2000)",
+  "normal_vector": [0.0, 0.0, 1.0],
+  "reference_frame": "ECLIPJ2000",
+  "source": "Defined by Earth's orbital angular momentum vector",
+  "epoch": "J2000.0"
+}
