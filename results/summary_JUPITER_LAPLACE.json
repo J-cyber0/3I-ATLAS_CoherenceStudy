@@ -1,8 +1,13 @@
 {
-  "timestamp": "2025-11-04T18:52:41.546597+00:00",
+  "timestamp": "2025-11-04T20:54:21.887329+00:00",
   "plane": "JUPITER_LAPLACE",
   "theta0_deg": 2.63,
-  "mode": "compare",
+  "mode": "isotropic",
+  "analytic_p": 0.045886041654294725,
+  "empirical_p": 0.046015,
+  "delta_p": 0.00012895834570527537,
+  "z_score": 1.6861231428704881,
+  "N": 1000000,
   "meta": {
     "numpy_version": "2.3.4",
     "pandas_version": "2.3.3",

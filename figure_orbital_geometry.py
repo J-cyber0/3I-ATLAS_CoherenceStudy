@@ -18,7 +18,9 @@ import json
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.mplot3d.art3d import Line3DCollection
 
 
 # ----------------------------------------------------------------------
@@ -50,6 +52,41 @@ def load_plane_normal(plane_name, data_dir="data/reference_planes"):
         np.cos(i)
     ]
     return unit(normal)
+
+
+# ----------------------------------------------------------------------
+# Helper: fading trajectory with arrow
+# ----------------------------------------------------------------------
+def plot_fading_arrow(ax, start, end, n_segments=60, cmap_name="Reds"):
+    """Draw 3I/ATLAS trajectory with fade and arrowhead."""
+    t = np.linspace(0, 1, n_segments)
+    points = start[None, :] + (end - start)[None, :] * t[:, None]
+    segments = np.concatenate([points[:-1, None, :], points[1:, None, :]], axis=1)
+
+    cmap = cm.get_cmap(cmap_name)
+    colors = [cmap(0.85 - 0.7 * i / n_segments) for i in range(n_segments - 1)]
+
+    lc = Line3DCollection(segments, colors=colors, linewidth=2.5, alpha=0.95)
+    ax.add_collection(lc)
+
+    # Arrow tip
+    arrow_dir = (end - start) / np.linalg.norm(end - start)
+    ax.quiver(
+        end[0] - 0.1 * arrow_dir[0],
+        end[1] - 0.1 * arrow_dir[1],
+        end[2] - 0.1 * arrow_dir[2],
+        arrow_dir[0],
+        arrow_dir[1],
+        arrow_dir[2],
+        length=0.2,
+        color=cmap(0.3),
+        linewidth=2.2,
+        arrow_length_ratio=0.4,
+        normalize=True,
+    )
+
+    
+
 
 # ----------------------------------------------------------------------
 # Main plotting routine
@@ -89,12 +126,14 @@ def plot_orbital_geometry(
     ax = fig.add_subplot(111, projection="3d")
     ax.view_init(elev=25, azim=120)
 
+    # Planes
     ax.plot_surface(X, Y, Z_ecl, alpha=0.25, color="lightgray", linewidth=0)
     ax.plot_surface(X, Y, Z_ref, alpha=0.35, color="lightblue", linewidth=0)
 
-    ax.plot(traj[:,0], traj[:,1], traj[:,2],
-            color="crimson", lw=2.0, label="3I/ATLAS Inbound Path")
+    # 3I/ATLAS trajectory with fade + arrow
+    plot_fading_arrow(ax, traj[0], traj[-1])
 
+    # Plane normals
     scale = 0.8
     ax.quiver(0, 0, 0, *n_ecl, color="dimgray", length=scale,
               arrow_length_ratio=0.1, label="Ecliptic Normal")
@@ -109,7 +148,6 @@ def plot_orbital_geometry(
     ax.set_title(f"3I/ATLAS Orbital Geometry — {plane_name}", fontsize=11, pad=12)
     ax.legend(frameon=False, fontsize=9, loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=2)
     fig.subplots_adjust(bottom=0.18)
-
 
     for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
         axis.pane.fill = False
