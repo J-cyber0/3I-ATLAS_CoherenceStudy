@@ -84,6 +84,5 @@ All figures are exported automatically to the `figures/` directory in both `.png
 If you use this repository, please cite:
 
 **J. Cyber**, *Preferential Plane Alignment of Interstellar Object 3I/ATLAS*, 2025.  
-DOI: [placeholder]
 
 © 2025 J. Cyber. Released under the **MIT License**.
