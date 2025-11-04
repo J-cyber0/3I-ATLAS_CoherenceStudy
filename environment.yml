@@ -1,0 +1,8 @@
+name: 3I-ATLAS
+dependencies:
+  - python=3.12
+  - numpy=2.1
+  - astropy=6.1
+  - matplotlib=3.9
+  - jupyter=1.0
+  - scipy=1.14
