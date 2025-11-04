@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-04T17:10:20.554901+00:00",
+  "timestamp": "2025-11-04T18:36:44.815562+00:00",
   "plane": "ECLIPTIC",
   "theta0_deg": 2.34,
   "mode": "isotropic",
@@ -12,7 +12,7 @@
     "numpy_version": "2.3.4",
     "pandas_version": "2.3.3",
     "seed": 42,
-    "script_version": "v1.4",
+    "script_version": "v1.5",
     "input_hashes": {
       "orbital_csv": "cd0b1a5c82df",
       "plane_json": "4cf62959ed54"

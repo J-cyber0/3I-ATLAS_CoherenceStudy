@@ -1,4 +1,7 @@
 {
-  "i_J": 1.305,
-  "Omega_J": 100.464
+  "name": "JUPITER_LAPLACE",
+  "description": "Mean Laplace plane of Jupiter’s system relative to the ecliptic, epoch J2000.",
+  "normal_vector": [0.160, -0.028, 0.987],
+  "inclination_deg": 1.305,
+  "ascending_node_deg": 100.464
 }

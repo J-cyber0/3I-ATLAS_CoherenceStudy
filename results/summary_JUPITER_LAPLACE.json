@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-04T17:19:05.758683+00:00",
+  "timestamp": "2025-11-04T18:52:41.546597+00:00",
   "plane": "JUPITER_LAPLACE",
   "theta0_deg": 2.63,
   "mode": "compare",
@@ -7,10 +7,10 @@
     "numpy_version": "2.3.4",
     "pandas_version": "2.3.3",
     "seed": 42,
-    "script_version": "v1.4",
+    "script_version": "v1.5",
     "input_hashes": {
       "orbital_csv": "cd0b1a5c82df",
-      "plane_json": "b22aea8925e1"
+      "plane_json": "43963af9e44f"
     }
   }
 }
